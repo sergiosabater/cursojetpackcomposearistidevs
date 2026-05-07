@@ -2,7 +2,10 @@ package com.example.cursojetpackcomposearistidevs.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -14,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun MyTextFieldParent(modifier: Modifier = Modifier) {
@@ -25,6 +29,8 @@ fun MyTextFieldParent(modifier: Modifier = Modifier) {
         MyTextField2(value = value) { value = it }
         MyAdvanceTextField(value = value) { value = it }
         MyPasswordTextField(value = value) { value = it }
+        Spacer(Modifier.height(20.dp))
+        MyOutlinedTextField(value = value) { value = it }
     }
 
 
@@ -72,4 +78,9 @@ fun MyPasswordTextField(value: String, onValueChange: (String) -> Unit) {
             )
         }
     )
+}
+
+@Composable
+fun MyOutlinedTextField(value: String, onValueChange: (String) -> Unit) {
+    OutlinedTextField(value = value, onValueChange = { onValueChange(it) })
 }
