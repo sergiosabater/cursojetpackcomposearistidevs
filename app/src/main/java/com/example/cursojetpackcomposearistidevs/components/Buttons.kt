@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -40,6 +41,10 @@ fun MyButtons(modifier: Modifier = Modifier) {
 
         TextButton(onClick = {}) {
             Text("Text button")
+        }
+
+        ElevatedButton(onClick = {}) {
+            Text("Elevated button")
         }
     }
 }
