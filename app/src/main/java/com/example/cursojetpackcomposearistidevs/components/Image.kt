@@ -43,7 +43,7 @@ fun MyNetworkImage(modifier: Modifier = Modifier) {
     AsyncImage(
         model = "https://www.disfracesjarana.com/cdn/shop/files/disfraz-payaso-elegante-infantil.jpg?v=1746175092&width=800",
         contentDescription = "Image from network",
-        modifier = Modifier.size(250.dp),
+        modifier = modifier.size(250.dp),
         onError = {
             Log.i("Image", "Ha ocurrido un error ${it.result.throwable.message}")
         }
