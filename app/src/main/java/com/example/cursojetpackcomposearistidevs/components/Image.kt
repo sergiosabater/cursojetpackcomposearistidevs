@@ -6,6 +6,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -18,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.example.cursojetpackcomposearistidevs.R
 
-@Preview
 @Composable
 fun MyImage(modifier: Modifier = Modifier) {
     Image(
@@ -48,5 +48,15 @@ fun MyNetworkImage(modifier: Modifier = Modifier) {
             Log.i("Image", "Ha ocurrido un error ${it.result.throwable.message}")
         }
     )
+}
 
+@Preview
+@Composable
+fun MyIcon(modifier: Modifier = Modifier) {
+    Icon(
+        painter = painterResource(R.drawable.ic_personita),
+        contentDescription = null,
+        modifier = modifier.size(300.dp),
+        tint = Color.Blue
+    )
 }
