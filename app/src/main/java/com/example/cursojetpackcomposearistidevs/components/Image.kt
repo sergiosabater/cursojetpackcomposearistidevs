@@ -1,5 +1,6 @@
 package com.example.cursojetpackcomposearistidevs.components
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.size
@@ -14,6 +15,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
 import com.example.cursojetpackcomposearistidevs.R
 
 @Preview
@@ -33,6 +35,18 @@ fun MyImage(modifier: Modifier = Modifier) {
                 )
             ),
         contentScale = ContentScale.Inside
+    )
+}
+
+@Composable
+fun MyNetworkImage(modifier: Modifier = Modifier) {
+    AsyncImage(
+        model = "https://www.disfracesjarana.com/cdn/shop/files/disfraz-payaso-elegante-infantil.jpg?v=1746175092&width=800",
+        contentDescription = "Image from network",
+        modifier = Modifier.size(250.dp),
+        onError = {
+            Log.i("Image", "Ha ocurrido un error ${it.result.throwable.message}")
+        }
     )
 
 }
