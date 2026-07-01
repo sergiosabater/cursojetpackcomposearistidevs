@@ -2,9 +2,12 @@ package com.example.cursojetpackcomposearistidevs.components.layout
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,6 +26,14 @@ fun Progress(modifier: Modifier = Modifier) {
             Modifier.size(140.dp),
             color = Color.Red,
             strokeWidth = 10.dp,
+            trackColor = Color.Blue,
+            strokeCap = StrokeCap.Round
+        )
+
+        Spacer(Modifier.height(24.dp))
+
+        LinearProgressIndicator(
+            color = Color.Red,
             trackColor = Color.Blue,
             strokeCap = StrokeCap.Round
         )
