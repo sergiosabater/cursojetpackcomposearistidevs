@@ -1,4 +1,4 @@
-package com.example.cursojetpackcomposearistidevs.components.layout
+package com.example.cursojetpackcomposearistidevs.components
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Arrangement
