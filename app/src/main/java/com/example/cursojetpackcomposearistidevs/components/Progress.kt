@@ -118,6 +118,4 @@ fun ProgressAnimation(modifier: Modifier = Modifier) {
         )
 
     }
-
-
 }
