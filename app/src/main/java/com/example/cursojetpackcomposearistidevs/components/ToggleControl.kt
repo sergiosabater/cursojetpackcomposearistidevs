@@ -1,7 +1,9 @@
 package com.example.cursojetpackcomposearistidevs.components
 
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.cursojetpackcomposearistidevs.components.state.CheckBoxState
 
 @Composable
 fun MySwitch(modifier: Modifier = Modifier) {
@@ -66,5 +69,53 @@ fun MyCheckBox(modifier: Modifier = Modifier) {
             Text("Acepto los términos y condiciones")
 
         }
+    }
+}
+
+@Composable
+fun ParentCheckBoxes(modifier: Modifier = Modifier) {
+
+    var state by remember {
+        mutableStateOf(
+            listOf(
+                CheckBoxState(id = "terms", label = "Aceptar los términos y condiciones"),
+                CheckBoxState(id = "newsletters", label = "Recibir la newsletter", true),
+                CheckBoxState(id = "updates", label = "Recibir actualizaciones"),
+            )
+        )
+    }
+
+    Column(modifier = modifier.fillMaxSize()) {
+        state.forEach { myState ->
+            CheckBoxWithText(checkBoxState = myState) {
+                state = state.map {
+                    if (it.id == myState.id) {
+                        myState.copy(checked = !myState.checked)
+                    } else {
+                        it
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun CheckBoxWithText(
+    modifier: Modifier = Modifier,
+    checkBoxState: CheckBoxState,
+    onCheckedChange: (CheckBoxState) -> Unit
+) {
+
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier.clickable { onCheckedChange(checkBoxState) }) {
+        Checkbox(
+            checked = checkBoxState.checked,
+            onCheckedChange = { onCheckedChange(checkBoxState) },
+            enabled = true,
+        )
+        Spacer(Modifier.width(12.dp))
+        Text(checkBoxState.label)
     }
 }
