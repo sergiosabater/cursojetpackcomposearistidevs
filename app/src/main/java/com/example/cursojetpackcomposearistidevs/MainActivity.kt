@@ -10,7 +10,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.cursojetpackcomposearistidevs.components.ParentCheckBoxes
+import com.example.cursojetpackcomposearistidevs.components.TriStateCheckBox
 import com.example.cursojetpackcomposearistidevs.login.Greeting
 import com.example.cursojetpackcomposearistidevs.ui.theme.CursoJetpackComposeAristiDevsTheme
 
@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             CursoJetpackComposeAristiDevsTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ParentCheckBoxes(Modifier.padding(innerPadding))
+                    TriStateCheckBox(Modifier.padding(innerPadding))
                 }
             }
         }
