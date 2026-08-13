@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
@@ -148,13 +150,38 @@ fun TriStateCheckBox(modifier: Modifier = Modifier) {
             })
             Text("Seleccionar todo")
         }
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(horizontal = 16.dp)) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(horizontal = 16.dp)
+        ) {
             Checkbox(child1, onCheckedChange = { child1 = it })
             Text("Ejemplo 1")
         }
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(horizontal = 16.dp)) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(horizontal = 16.dp)
+        ) {
             Checkbox(child2, onCheckedChange = { child2 = it })
             Text("Ejemplo 2")
         }
+    }
+}
+
+@Composable
+fun MyRadioButton(modifier: Modifier = Modifier) {
+    var state by remember { mutableStateOf(false) }
+    Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
+        RadioButton(
+            selected = state,
+            onClick = { state = true },
+            enabled = true,
+            colors = RadioButtonDefaults.colors(
+                selectedColor = Color.Red,
+                unselectedColor = Color.Yellow,
+                disabledSelectedColor = Color.Green,
+                disabledUnselectedColor = Color.Magenta
+            )
+        )
+        Text("Ejemplo 1")
     }
 }
