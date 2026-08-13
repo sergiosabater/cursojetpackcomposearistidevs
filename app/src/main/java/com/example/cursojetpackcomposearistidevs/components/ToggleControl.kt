@@ -185,3 +185,31 @@ fun MyRadioButton(modifier: Modifier = Modifier) {
         Text("Ejemplo 1")
     }
 }
+
+@Composable
+fun MyRadioButtonList(modifier: Modifier = Modifier) {
+    var selectedName by remember { mutableStateOf("") }
+
+    Column(modifier = modifier) {
+        RadioButtonComponent(name = "Aris", selectedName = selectedName) {
+            selectedName = it
+        }
+        RadioButtonComponent(name = "Pepe", selectedName = selectedName) {
+            selectedName = it
+        }
+        RadioButtonComponent(name = "Coors", selectedName = selectedName) {
+            selectedName = it
+        }
+        RadioButtonComponent(name = "David", selectedName = selectedName) {
+            selectedName = it
+        }
+    }
+}
+
+@Composable
+fun RadioButtonComponent(name: String, selectedName: String, onItemSelected: (String) -> Unit) {
+    Row (verticalAlignment = Alignment.CenterVertically) {
+        RadioButton(selected = name == selectedName, onClick = { onItemSelected(name) })
+        Text(name, modifier = Modifier.clickable{ onItemSelected(name) })
+    }
+}
