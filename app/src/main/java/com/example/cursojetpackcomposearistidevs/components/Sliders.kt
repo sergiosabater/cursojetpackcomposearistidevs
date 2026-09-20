@@ -3,6 +3,8 @@ package com.example.cursojetpackcomposearistidevs.components
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.RangeSlider
+import androidx.compose.material3.RangeSliderState
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.SliderState
@@ -59,8 +61,29 @@ fun MySliderAdvance(modifier: Modifier = Modifier) {
     )
 
     Column(modifier = modifier.padding(horizontal = 32.dp)) {
-        Slider(state, colors = colors, thumb = { state: SliderState -> Text(state.value.toString()) })
+        Slider(
+            state,
+            colors = colors,
+            thumb = { state: SliderState -> Text(state.value.toString()) })
         Text(example)
+    }
+
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun MyRangeSlider(modifier: Modifier = Modifier) {
+
+    val state = remember {
+        RangeSliderState(
+            activeRangeStart = 3f,
+            activeRangeEnd = 6f,
+            valueRange = 0f..10f
+        )
+    }
+
+    Column(modifier = modifier.padding(horizontal = 30.dp)) {
+        RangeSlider(state = state)
     }
 
 }
