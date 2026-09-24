@@ -18,31 +18,31 @@ fun MyTopAppBar(modifier: Modifier = Modifier) {
         title = { Text("My App") },
         navigationIcon = {
             Icon(
-                painter = painterResource(R.drawable.ic_personita),
+                painter = painterResource(R.drawable.baseline_info_outline_24),
                 contentDescription = null
             )
         },
         actions = {
             Icon(
-                painter = painterResource(R.drawable.ic_personita),
+                painter = painterResource(R.drawable.baseline_info_outline_24),
                 contentDescription = null
             )
             Icon(
-                painter = painterResource(R.drawable.ic_personita),
+                painter = painterResource(R.drawable.baseline_info_outline_24),
                 contentDescription = null,
-                tint = Color.Yellow
+                tint = Color.White
             )
             Icon(
-                painter = painterResource(R.drawable.ic_personita),
+                painter = painterResource(R.drawable.baseline_info_outline_24),
                 contentDescription = null
             )
         },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color.Gray,
+            containerColor = Color.Red,
             titleContentColor = Color.White,
-            navigationIconContentColor = Color.Magenta,
-            actionIconContentColor = Color.Red,
-            scrolledContainerColor = Color.Black
+            navigationIconContentColor = Color.White,
+            actionIconContentColor = Color.White,
+            scrolledContainerColor = Color.White
         )
     )
 }
