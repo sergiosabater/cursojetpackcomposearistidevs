@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.cursojetpackcomposearistidevs.components.MyFAB
+import com.example.cursojetpackcomposearistidevs.components.MyNavigationBar
 import com.example.cursojetpackcomposearistidevs.components.MyTopAppBar
 import com.example.cursojetpackcomposearistidevs.login.Greeting
 import com.example.cursojetpackcomposearistidevs.ui.theme.CursoJetpackComposeAristiDevsTheme
@@ -47,7 +48,8 @@ class MainActivity : ComponentActivity() {
                     topBar = { MyTopAppBar() },
                     snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
                     floatingActionButton = { MyFAB() },
-                    floatingActionButtonPosition = FabPosition.Start
+                    floatingActionButtonPosition = FabPosition.Start,
+                    bottomBar = { MyNavigationBar() }
                 )
                 { innerPadding ->
                     Box(
