@@ -1,16 +1,20 @@
 package com.example.cursojetpackcomposearistidevs.components
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material3.Badge
 import androidx.compose.material3.DrawerState
+import androidx.compose.material3.Icon
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
+import androidx.compose.material3.NavigationDrawerItem
+import androidx.compose.material3.NavigationDrawerItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import kotlinx.coroutines.launch
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun MyModalDrawer(
@@ -25,17 +29,25 @@ fun MyModalDrawer(
         drawerContent = {
             ModalDrawerSheet(
                 drawerShape = RoundedCornerShape(
-                    topEndPercent = 50,
-                    bottomEndPercent = 50,
+                    topEndPercent = 16,
+                    bottomEndPercent = 16,
                     bottomStartPercent = 0
-                )
+                ),
+                drawerContentColor = Color.Red,
+                drawerContainerColor = Color.White,
+                drawerTonalElevation = 10.dp
             ) {
-                Text(
-                    "Ejemplo 1",
-                    modifier = Modifier.clickable { scope.launch { drawerState.close() } })
-                Text("Ejemplo 2")
-                Text("Ejemplo 3")
-                Text("Ejemplo 4")
+                NavigationDrawerItem(
+                    label = { Text("Ejemplo 1") },
+                    selected = true,
+                    onClick = {},
+                    icon = { Icon(imageVector = Icons.Default.Home, contentDescription = null) },
+                    badge = { Badge { Text("3") } },
+                    shape = RoundedCornerShape(0),
+                    colors = NavigationDrawerItemDefaults.colors(
+
+                    )
+                )
             }
         },
         scrimColor = Color.Red
