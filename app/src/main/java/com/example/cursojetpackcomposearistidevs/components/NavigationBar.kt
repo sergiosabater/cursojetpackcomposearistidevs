@@ -29,18 +29,22 @@ fun MyNavigationBar(modifier: Modifier = Modifier) {
 
     var selectedIndex by remember { mutableIntStateOf(2) }
 
-    NavigationBar() {
+    NavigationBar(
+        containerColor = Color.Red
+    ) {
         itemList.forEachIndexed { index, item ->
-            MyNavigationBarItem(item = item, isSelected = index == selectedIndex)
+            MyNavigationBarItem(item = item, isSelected = index == selectedIndex) {
+                selectedIndex = index
+            }
         }
     }
 }
 
 @Composable
-fun RowScope.MyNavigationBarItem(item: NavItem, isSelected: Boolean) {
+fun RowScope.MyNavigationBarItem(item: NavItem, isSelected: Boolean, onItemClick: () -> Unit) {
     NavigationBarItem(
         selected = isSelected,
-        onClick = {},
+        onClick = { onItemClick() },
         icon = {
             Icon(
                 imageVector = item.icon,
@@ -48,10 +52,10 @@ fun RowScope.MyNavigationBarItem(item: NavItem, isSelected: Boolean) {
             )
         },
         label = { Text(item.name) },
-        alwaysShowLabel = true,
+        alwaysShowLabel = false,
         colors = NavigationBarItemDefaults.colors(
             selectedIconColor = Color.Red,
-            selectedTextColor = Color.Red,
+            selectedTextColor = Color.White,
             indicatorColor = Color.White,
             unselectedIconColor = Color.White,
             unselectedTextColor = Color.White,
