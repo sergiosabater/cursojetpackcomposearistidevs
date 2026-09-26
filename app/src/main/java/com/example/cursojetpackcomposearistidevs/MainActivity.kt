@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.cursojetpackcomposearistidevs.components.MyFAB
+import com.example.cursojetpackcomposearistidevs.components.MyModalDrawer
 import com.example.cursojetpackcomposearistidevs.components.MyNavigationBar
 import com.example.cursojetpackcomposearistidevs.components.MyTopAppBar
 import com.example.cursojetpackcomposearistidevs.login.Greeting
@@ -43,38 +44,40 @@ class MainActivity : ComponentActivity() {
 
                 var texto by remember { mutableStateOf("Esta es mi screen") }
 
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                    topBar = { MyTopAppBar() },
-                    snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
-                    floatingActionButton = { MyFAB() },
-                    floatingActionButtonPosition = FabPosition.Start,
-                    bottomBar = { MyNavigationBar() }
-                )
-                { innerPadding ->
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(innerPadding)
-                            .background(Color.Cyan),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(text = texto, modifier = Modifier.clickable {
-                            scope.launch {
-                                val result = snackbarHostState.showSnackbar(
-                                    message = "Ejemplo",
-                                    actionLabel = "Deshacer"
-                                )
+                MyModalDrawer() {
+                    Scaffold(
+                        modifier = Modifier.fillMaxSize(),
+                        topBar = { MyTopAppBar() },
+                        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
+                        floatingActionButton = { MyFAB() },
+                        floatingActionButtonPosition = FabPosition.Start,
+                        bottomBar = { MyNavigationBar() }
+                    )
+                    { innerPadding ->
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(innerPadding)
+                                .background(Color.Cyan),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(text = texto, modifier = Modifier.clickable {
+                                scope.launch {
+                                    val result = snackbarHostState.showSnackbar(
+                                        message = "Ejemplo",
+                                        actionLabel = "Deshacer"
+                                    )
 
-                                if (result == SnackbarResult.ActionPerformed) {
-                                    // Pulsó deshacer
-                                    texto = "¡Pulsaste el botón Deshacer!"
+                                    if (result == SnackbarResult.ActionPerformed) {
+                                        // Pulsó deshacer
+                                        texto = "¡Pulsaste el botón Deshacer!"
 
-                                } else {
-                                    // No hizo nada
+                                    } else {
+                                        // No hizo nada
+                                    }
                                 }
-                            }
-                        })
+                            })
+                        }
                     }
                 }
             }
