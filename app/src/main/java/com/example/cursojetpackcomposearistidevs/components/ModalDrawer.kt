@@ -1,27 +1,38 @@
 package com.example.cursojetpackcomposearistidevs.components
 
-import androidx.compose.material3.DrawerValue
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.DrawerState
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Text
-import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import kotlinx.coroutines.launch
 
 @Composable
-fun MyModalDrawer(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
-
-    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+fun MyModalDrawer(
+    drawerState: DrawerState,
+    content: @Composable () -> Unit
+) {
 
     val scope = rememberCoroutineScope()
 
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
-            ModalDrawerSheet {
-                Text("Ejemplo 1")
+            ModalDrawerSheet(
+                drawerShape = RoundedCornerShape(
+                    topEndPercent = 50,
+                    bottomEndPercent = 50,
+                    bottomStartPercent = 0
+                )
+            ) {
+                Text(
+                    "Ejemplo 1",
+                    modifier = Modifier.clickable { scope.launch { drawerState.close() } })
                 Text("Ejemplo 2")
                 Text("Ejemplo 3")
                 Text("Ejemplo 4")
