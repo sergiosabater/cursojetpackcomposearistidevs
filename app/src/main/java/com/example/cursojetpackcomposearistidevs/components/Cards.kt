@@ -54,8 +54,6 @@ fun MyCard(modifier: Modifier = Modifier) {
 }
 
 @Preview(
-    showBackground = true,
-    showSystemUi = true
 )
 @Composable
 fun MyPreview() {
