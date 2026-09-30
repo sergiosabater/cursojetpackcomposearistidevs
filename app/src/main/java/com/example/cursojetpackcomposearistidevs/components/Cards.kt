@@ -49,10 +49,6 @@ fun MyCard(modifier: Modifier = Modifier) {
                 Text("Sergio Sabater", fontSize = 28.sp, fontWeight = FontWeight.Bold)
                 Text("Sergio es un creador de contenido bastante inútil", fontSize = 20.sp, fontStyle = FontStyle.Italic)
             }
-            Column {
-                Text("Sergio Sabater", fontSize = 28.sp, fontWeight = FontWeight.Bold)
-                Text("Sergio es un creador de contenido bastante inútil", fontSize = 20.sp, fontStyle = FontStyle.Italic)
-            }
         }
     }
 }
