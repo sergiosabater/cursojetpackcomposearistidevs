@@ -3,6 +3,7 @@ package com.example.cursojetpackcomposearistidevs.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -19,5 +20,7 @@ fun MyComponent() {
     Column(modifier = Modifier.fillMaxSize()) {
         Text("Mi texto de prueba")
         Box(modifier = Modifier.fillMaxWidth().height(20.dp).background(Color.Blue))
+        Spacer(modifier = Modifier.height(16.dp))
+        Text("Mi texto de prueba 2")
     }
 }
