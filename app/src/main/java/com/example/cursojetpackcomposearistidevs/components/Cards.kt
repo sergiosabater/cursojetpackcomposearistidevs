@@ -15,6 +15,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -94,13 +95,45 @@ fun MyElevatedCard(modifier: Modifier = Modifier) {
     }
 }
 
+@Composable
+fun MyOutlinedCard(modifier: Modifier = Modifier) {
+    OutlinedCard(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Box(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .size(75.dp)
+                    .clip(CircleShape)
+                    .background(Color.Red)
+            ) { }
+            Column {
+                Text(
+                    "Sergio Sabater",
+                    fontSize = 28.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Red
+                )
+                Text(
+                    "Sergio es un creador de contenido bastante inútil",
+                    fontSize = 20.sp,
+                    fontStyle = FontStyle.Italic
+                )
+            }
+        }
+    }
+}
+
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun MyPreview() {
     CursoJetpackComposeAristiDevsTheme {
         Column {
             Spacer(modifier = Modifier.height(40.dp))
-            MyElevatedCard()
+            MyOutlinedCard()
         }
     }
 }
