@@ -27,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.cursojetpackcomposearistidevs.components.MyBadgeBox
 import com.example.cursojetpackcomposearistidevs.components.MyFAB
 import com.example.cursojetpackcomposearistidevs.components.MyModalDrawer
 import com.example.cursojetpackcomposearistidevs.components.MyNavigationBar
@@ -41,47 +42,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             CursoJetpackComposeAristiDevsTheme {
-                val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-                val snackbarHostState = remember { SnackbarHostState() }
-                val scope = rememberCoroutineScope()
-
-                var texto by remember { mutableStateOf("Esta es mi screen") }
-
-                MyModalDrawer(drawerState) {
-                    Scaffold(
-                        modifier = Modifier.fillMaxSize(),
-                        topBar = { MyTopAppBar { scope.launch { drawerState.open() } } },
-                        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
-                        floatingActionButton = { MyFAB() },
-                        floatingActionButtonPosition = FabPosition.Start,
-                        bottomBar = { MyNavigationBar() }
-                    )
-                    { innerPadding ->
-                        Box(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .padding(innerPadding)
-                                .background(Color.Cyan),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Text(text = texto, modifier = Modifier.clickable {
-                                scope.launch {
-                                    val result = snackbarHostState.showSnackbar(
-                                        message = "Ejemplo",
-                                        actionLabel = "Deshacer"
-                                    )
-
-                                    if (result == SnackbarResult.ActionPerformed) {
-                                        // Pulsó deshacer
-                                        texto = "¡Pulsaste el botón Deshacer!"
-
-                                    } else {
-                                        // No hizo nada
-                                    }
-                                }
-                            })
-                        }
-                    }
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    MyBadgeBox(Modifier.padding(innerPadding))
                 }
             }
         }
@@ -93,5 +55,74 @@ class MainActivity : ComponentActivity() {
 fun GreetingPreview() {
     CursoJetpackComposeAristiDevsTheme {
         Greeting("Android")
+    }
+}
+
+@Composable
+fun MyMainPage(modifier: Modifier = Modifier) {
+
+    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    val snackbarHostState = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
+
+    var texto by remember { mutableStateOf("Esta es mi screen") }
+
+    MyModalDrawer(drawerState) {
+
+        Scaffold(
+            modifier = modifier.fillMaxSize(),
+
+            topBar = {
+                MyTopAppBar {
+                    scope.launch {
+                        drawerState.open()
+                    }
+                }
+            },
+
+            snackbarHost = {
+                SnackbarHost(
+                    hostState = snackbarHostState
+                )
+            },
+
+            floatingActionButton = {
+                MyFAB()
+            },
+
+            floatingActionButtonPosition = FabPosition.Start,
+
+            bottomBar = {
+                MyNavigationBar()
+            }
+        ) { innerPadding ->
+
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
+                    .background(Color.Cyan),
+                contentAlignment = Alignment.Center
+            ) {
+
+                Text(
+                    text = texto,
+                    modifier = Modifier.clickable {
+
+                        scope.launch {
+
+                            val result = snackbarHostState.showSnackbar(
+                                message = "Ejemplo",
+                                actionLabel = "Deshacer"
+                            )
+
+                            if (result == SnackbarResult.ActionPerformed) {
+                                texto = "¡Pulsaste el botón Deshacer!"
+                            }
+                        }
+                    }
+                )
+            }
+        }
     }
 }
