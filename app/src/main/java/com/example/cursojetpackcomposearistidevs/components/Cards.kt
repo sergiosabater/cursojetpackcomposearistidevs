@@ -35,7 +35,15 @@ fun MyCard(modifier: Modifier = Modifier) {
             .padding(horizontal = 16.dp),
         shape = MaterialTheme.shapes.extraLarge,
         border = BorderStroke(2.dp, Color.Red),
-        elevation = CardDefaults.cardElevation(defaultElevation = 20.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 20.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.Green,
+            contentColor = Color.Blue,
+            disabledContentColor = Color.Gray,
+            disabledContainerColor = Color.DarkGray
+        ),
+        enabled = false,
+        onClick = {}
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Box(
@@ -46,15 +54,14 @@ fun MyCard(modifier: Modifier = Modifier) {
                     .background(Color.Red)
             ) { }
             Column {
-                Text("Sergio Sabater", fontSize = 28.sp, fontWeight = FontWeight.Bold)
+                Text("Sergio Sabater", fontSize = 28.sp, fontWeight = FontWeight.Bold, color = Color.Red)
                 Text("Sergio es un creador de contenido bastante inútil", fontSize = 20.sp, fontStyle = FontStyle.Italic)
             }
         }
     }
 }
 
-@Preview(
-)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun MyPreview() {
     CursoJetpackComposeAristiDevsTheme {
