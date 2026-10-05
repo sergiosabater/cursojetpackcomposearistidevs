@@ -27,7 +27,6 @@ fun MyComponent() {
     var myValue by remember { mutableFloatStateOf(0f) }
 
     Column(modifier = Modifier.fillMaxSize()) {
-        Text("Mi texto de prueba")
         Box(modifier = Modifier.fillMaxWidth().height(20.dp).background(Color.Blue))
         Spacer(modifier = Modifier.height(16.dp))
         Text("Mi texto de prueba 2")
