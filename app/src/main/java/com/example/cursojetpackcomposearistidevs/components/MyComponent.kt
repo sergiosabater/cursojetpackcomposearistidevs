@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -27,9 +26,12 @@ fun MyComponent() {
     var myValue by remember { mutableFloatStateOf(0f) }
 
     Column(modifier = Modifier.fillMaxSize()) {
-        Box(modifier = Modifier.fillMaxWidth().height(20.dp).background(Color.Blue))
+        Box(modifier = Modifier
+            .fillMaxWidth()
+            .height(20.dp)
+            .background(Color.Blue))
         Spacer(modifier = Modifier.height(16.dp))
-        Text("Mi texto de prueba 2")
+
         Slider(
             value = myValue,
             onValueChange = { myValue = it },
