@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.material3.Slider
-import androidx.compose.material3.SliderDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -31,11 +29,5 @@ fun MyComponent() {
             .height(20.dp)
             .background(Color.Blue))
         Spacer(modifier = Modifier.height(16.dp))
-
-        Slider(
-            value = myValue,
-            onValueChange = { myValue = it },
-            colors = SliderDefaults.colors()
-        )
     }
 }
