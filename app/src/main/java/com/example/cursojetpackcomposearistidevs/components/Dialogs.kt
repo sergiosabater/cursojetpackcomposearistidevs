@@ -13,11 +13,14 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun MyDialog(modifier: Modifier = Modifier) {
-    var status by remember { mutableStateOf(true) }
-    AlertDialog(
-        onDismissRequest = { status = false },
-        confirmButton = { Button(onClick = { status = false }) { Text("Entendido") } }
-    )
+    var showDialog by remember { mutableStateOf(true) }
+    if (showDialog) {
+        AlertDialog(
+            onDismissRequest = { showDialog = false },
+            confirmButton = { Button(onClick = { showDialog = false }) { Text("Entendido") } },
+            text = { Text("Esta es mi descripción") }
+        )
+    }
 }
 
 @Preview
