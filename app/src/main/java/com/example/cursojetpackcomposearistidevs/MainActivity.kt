@@ -27,7 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.cursojetpackcomposearistidevs.components.MyBadgeBox
+import com.example.cursojetpackcomposearistidevs.components.MyDivider
 import com.example.cursojetpackcomposearistidevs.components.MyFAB
 import com.example.cursojetpackcomposearistidevs.components.MyModalDrawer
 import com.example.cursojetpackcomposearistidevs.components.MyNavigationBar
@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             CursoJetpackComposeAristiDevsTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MyBadgeBox(Modifier.padding(innerPadding))
+                    MyDivider(Modifier.padding(innerPadding))
                 }
             }
         }
