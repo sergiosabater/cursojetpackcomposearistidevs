@@ -1,5 +1,6 @@
 package com.example.cursojetpackcomposearistidevs.components
 
+import android.icu.util.Calendar
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -62,7 +63,17 @@ fun MyDialog(modifier: Modifier = Modifier) {
 @Composable
 fun MyDateDialog(modifier: Modifier = Modifier) {
     var showDialog by remember { mutableStateOf(true) }
-    val datePickerState = rememberDatePickerState()
+
+    val calendar = Calendar.getInstance()
+    calendar.add(Calendar.DAY_OF_YEAR, +1)
+    calendar.set(Calendar.MONTH, Calendar.JANUARY)
+
+    val datePickerState = rememberDatePickerState(
+        initialSelectedDateMillis = calendar.timeInMillis,
+        initialDisplayedMonthMillis = calendar.timeInMillis,
+        yearRange = 2024 .. 2025
+    )
+
     if (showDialog) {
         DatePickerDialog(
             onDismissRequest = { showDialog = false },
