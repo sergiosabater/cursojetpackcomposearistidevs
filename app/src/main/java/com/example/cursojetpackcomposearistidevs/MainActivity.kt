@@ -27,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.cursojetpackcomposearistidevs.components.MyDateDialog
 import com.example.cursojetpackcomposearistidevs.components.MyDialog
 import com.example.cursojetpackcomposearistidevs.components.MyFAB
 import com.example.cursojetpackcomposearistidevs.components.MyModalDrawer
@@ -42,7 +43,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             CursoJetpackComposeAristiDevsTheme {
-                MyMainPage()
+                MyDateDialog()
                 /*Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     MyMainPage(Modifier.padding(innerPadding))
                 }*/

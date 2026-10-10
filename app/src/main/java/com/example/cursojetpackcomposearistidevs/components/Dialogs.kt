@@ -6,9 +6,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.DatePickerDefaults
+import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -52,6 +56,21 @@ fun MyDialog(modifier: Modifier = Modifier) {
                 decorFitsSystemWindows = true
             )
         )
+    }
+}
+
+@Composable
+fun MyDateDialog(modifier: Modifier = Modifier) {
+    var showDialog by remember { mutableStateOf(true) }
+    val datePickerState = rememberDatePickerState()
+    if (showDialog) {
+        DatePickerDialog(
+            onDismissRequest = { showDialog = false },
+            confirmButton = { TextButton(onClick = { showDialog = false }) { Text("Confirmar") } },
+            colors = DatePickerDefaults.colors()
+        ) {
+            DatePicker(datePickerState)
+        }
     }
 }
 
