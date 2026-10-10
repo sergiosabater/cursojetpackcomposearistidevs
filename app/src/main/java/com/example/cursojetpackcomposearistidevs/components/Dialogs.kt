@@ -10,6 +10,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDefaults
 import androidx.compose.material3.DatePickerDialog
+import androidx.compose.material3.DisplayMode
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -64,20 +65,40 @@ fun MyDialog(modifier: Modifier = Modifier) {
 fun MyDateDialog(modifier: Modifier = Modifier) {
     var showDialog by remember { mutableStateOf(true) }
 
-    val calendar = Calendar.getInstance()
-    calendar.add(Calendar.DAY_OF_YEAR, +1)
-    calendar.set(Calendar.MONTH, Calendar.JANUARY)
+    // Usamos remember para evitar recrear la instancia del calendario en cada recomposición
+    val calendar = remember {
+        Calendar.getInstance().apply {
+            add(Calendar.DAY_OF_YEAR, 1)
+            set(Calendar.MONTH, Calendar.JANUARY)
+        }
+    }
 
     val datePickerState = rememberDatePickerState(
         initialSelectedDateMillis = calendar.timeInMillis,
         initialDisplayedMonthMillis = calendar.timeInMillis,
-        yearRange = 2024 .. 2025
+        yearRange = 2024..2027, // Actualizado para incluir el año actual y evitar el crash
+        initialDisplayMode = DisplayMode.Input
     )
 
     if (showDialog) {
         DatePickerDialog(
+            modifier = modifier, // Aplicamos el modifier aquí
             onDismissRequest = { showDialog = false },
-            confirmButton = { TextButton(onClick = { showDialog = false }) { Text("Confirmar") } },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        // Aquí puedes obtener datePickerState.selectedDateMillis si lo necesitas
+                        showDialog = false
+                    }
+                ) {
+                    Text("Confirmar")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showDialog = false }) {
+                    Text("Cancelar")
+                }
+            },
             colors = DatePickerDefaults.colors()
         ) {
             DatePicker(datePickerState)
