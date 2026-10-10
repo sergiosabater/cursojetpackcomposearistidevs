@@ -1,6 +1,7 @@
 package com.example.cursojetpackcomposearistidevs.components
 
 import android.icu.util.Calendar
+import android.util.Log
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -12,6 +13,7 @@ import androidx.compose.material3.DatePickerDefaults
 import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.DisplayMode
 import androidx.compose.material3.Icon
+import androidx.compose.material3.SelectableDates
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberDatePickerState
@@ -77,18 +79,36 @@ fun MyDateDialog(modifier: Modifier = Modifier) {
         initialSelectedDateMillis = calendar.timeInMillis,
         initialDisplayedMonthMillis = calendar.timeInMillis,
         yearRange = 2024..2027, // Actualizado para incluir el año actual y evitar el crash
-        initialDisplayMode = DisplayMode.Input
+        initialDisplayMode = DisplayMode.Picker,
+        selectableDates = object : SelectableDates {
+            override fun isSelectableDate(utcTimeMillis: Long): Boolean {
+                val filterCalendar = Calendar.getInstance().apply {
+                    timeInMillis = utcTimeMillis
+                }
+                val day = filterCalendar.get(Calendar.DAY_OF_MONTH)
+                return day % 2 == 0
+            }
+        }
     )
 
     if (showDialog) {
         DatePickerDialog(
             modifier = modifier, // Aplicamos el modifier aquí
-            onDismissRequest = { showDialog = false },
+            onDismissRequest = { showDialog = true },
             confirmButton = {
                 TextButton(
                     onClick = {
                         // Aquí puedes obtener datePickerState.selectedDateMillis si lo necesitas
-                        showDialog = false
+                        showDialog = true
+                        val result = datePickerState.selectedDateMillis
+                        if (result != null) {
+                            val newCalendar = Calendar.getInstance().apply {
+                                timeInMillis = result
+                            }
+                            val day = newCalendar.get(Calendar.DAY_OF_MONTH)
+                            val month = newCalendar.get(Calendar.MONTH) + 1
+                            Log.i("FECHA SELECCIONADA", "DIA $day, MES $month")
+                        }
                     }
                 ) {
                     Text("Confirmar")
