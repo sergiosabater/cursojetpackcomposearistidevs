@@ -32,6 +32,7 @@ import com.example.cursojetpackcomposearistidevs.components.MyDialog
 import com.example.cursojetpackcomposearistidevs.components.MyFAB
 import com.example.cursojetpackcomposearistidevs.components.MyModalDrawer
 import com.example.cursojetpackcomposearistidevs.components.MyNavigationBar
+import com.example.cursojetpackcomposearistidevs.components.MyTimePicker
 import com.example.cursojetpackcomposearistidevs.components.MyTopAppBar
 import com.example.cursojetpackcomposearistidevs.login.Greeting
 import com.example.cursojetpackcomposearistidevs.ui.theme.CursoJetpackComposeAristiDevsTheme
@@ -43,7 +44,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             CursoJetpackComposeAristiDevsTheme {
-                MyDateDialog()
+                MyTimePicker()
                 /*Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     MyMainPage(Modifier.padding(innerPadding))
                 }*/
