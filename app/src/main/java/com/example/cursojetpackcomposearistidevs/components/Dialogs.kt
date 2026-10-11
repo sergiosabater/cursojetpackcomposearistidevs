@@ -141,7 +141,7 @@ fun MyTimePicker(modifier: Modifier = Modifier) {
     val timePickerState = rememberTimePickerState(
         initialHour = 7,
         initialMinute = 33,
-        is24Hour = true
+        is24Hour = false
     )
 
     if (showTimePicker) {
@@ -155,6 +155,11 @@ fun MyTimePicker(modifier: Modifier = Modifier) {
                         selectorColor = Color.White,
                         clockDialUnselectedContentColor = Color.White,
                         containerColor = Color.White,
+                        periodSelectorBorderColor = Color.Red,
+                        periodSelectorUnselectedContentColor = Color.Red,
+                        periodSelectorUnselectedContainerColor = Color.White,
+                        periodSelectorSelectedContainerColor = Color.Red,
+                        periodSelectorSelectedContentColor = Color.White
 
 
                     )
