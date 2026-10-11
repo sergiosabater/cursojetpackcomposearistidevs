@@ -159,9 +159,11 @@ fun MyTimePicker(modifier: Modifier = Modifier) {
                         periodSelectorUnselectedContentColor = Color.Red,
                         periodSelectorUnselectedContainerColor = Color.White,
                         periodSelectorSelectedContainerColor = Color.Red,
-                        periodSelectorSelectedContentColor = Color.White
-
-
+                        periodSelectorSelectedContentColor = Color.White,
+                        timeSelectorUnselectedContentColor = Color.Red,
+                        timeSelectorUnselectedContainerColor = Color.White,
+                        timeSelectorSelectedContainerColor = Color.Red,
+                        timeSelectorSelectedContentColor = Color.White
                     )
                 )
             }
