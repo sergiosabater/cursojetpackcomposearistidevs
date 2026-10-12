@@ -171,6 +171,20 @@ fun MyTimePicker(modifier: Modifier = Modifier) {
     }
 }
 
+@Composable
+fun MyCustomDialog(
+    modifier: Modifier = Modifier,
+    showDialog: Boolean,
+    onDismissDialog: () -> Unit
+) {
+    if (showDialog) {
+        Dialog(onDismissRequest = { onDismissDialog }) {
+
+        }
+    }
+
+}
+
 @Preview
 @Composable
 private fun MyPreview1() {
