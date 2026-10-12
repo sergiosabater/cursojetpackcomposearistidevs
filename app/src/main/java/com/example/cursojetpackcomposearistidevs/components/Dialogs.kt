@@ -3,9 +3,11 @@ package com.example.cursojetpackcomposearistidevs.components
 import android.icu.util.Calendar
 import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -189,8 +191,12 @@ fun MyCustomDialog(
                 modifier = modifier
                     .fillMaxWidth()
                     .background(Color.White, shape = RoundedCornerShape(24))
+                    .padding(24.dp)
             ) {
-                Row {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(16.dp),
+                    horizontalArrangement = Arrangement.Center
+                ) {
                     Text(pokemonCombat.pokemonA, fontWeight = FontWeight.Bold, fontSize = 20.sp)
                     Text("VS")
                     Text(pokemonCombat.pokemonB, fontWeight = FontWeight.Bold, fontSize = 20.sp)
