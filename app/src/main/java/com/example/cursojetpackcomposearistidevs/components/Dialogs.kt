@@ -4,6 +4,8 @@ import android.icu.util.Calendar
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -31,11 +33,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.window.SecureFlagPolicy
+import com.example.cursojetpackcomposearistidevs.components.model.PokemonCombat
 
 @Composable
 fun MyDialog(modifier: Modifier = Modifier) {
@@ -174,15 +179,28 @@ fun MyTimePicker(modifier: Modifier = Modifier) {
 @Composable
 fun MyCustomDialog(
     modifier: Modifier = Modifier,
+    pokemonCombat: PokemonCombat,
     showDialog: Boolean,
     onDismissDialog: () -> Unit
 ) {
     if (showDialog) {
         Dialog(onDismissRequest = { onDismissDialog }) {
-
+            Column(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .background(Color.White, shape = RoundedCornerShape(24))
+            ) {
+                Row {
+                    Text(pokemonCombat.pokemonA, fontWeight = FontWeight.Bold, fontSize = 20.sp)
+                    Text("VS")
+                    Text(pokemonCombat.pokemonB, fontWeight = FontWeight.Bold, fontSize = 20.sp)
+                }
+                Button(onClick = { onDismissDialog() }) {
+                    Text("A LUCHAR!!!")
+                }
+            }
         }
     }
-
 }
 
 @Preview
