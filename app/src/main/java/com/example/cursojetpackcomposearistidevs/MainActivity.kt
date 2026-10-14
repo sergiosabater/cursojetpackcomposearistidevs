@@ -33,6 +33,7 @@ import com.example.cursojetpackcomposearistidevs.components.MyFAB
 import com.example.cursojetpackcomposearistidevs.components.MyModalDrawer
 import com.example.cursojetpackcomposearistidevs.components.MyNavigationBar
 import com.example.cursojetpackcomposearistidevs.components.MyTopAppBar
+import com.example.cursojetpackcomposearistidevs.components.advance.InteractionSourceExample
 import com.example.cursojetpackcomposearistidevs.components.model.PokemonCombat
 import com.example.cursojetpackcomposearistidevs.login.Greeting
 import com.example.cursojetpackcomposearistidevs.ui.theme.CursoJetpackComposeAristiDevsTheme
@@ -43,23 +44,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-
-            var showDialog by remember { mutableStateOf(true) }
-            val pokemonCombat = PokemonCombat(pokemonA = "Pikachu", pokemonB = "Gengar")
-
-            CursoJetpackComposeAristiDevsTheme {
-                MyCustomDialog(
-                    showDialog = showDialog,
-                    pokemonCombat = pokemonCombat,
-                    onStartCombat = {
-
-                        showDialog = false
-                    },
-                    onDismissDialog = { showDialog = false })
-                /*Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MyMainPage(Modifier.padding(innerPadding))
-                }*/
-            }
+            InteractionSourceExample()
         }
     }
 }
