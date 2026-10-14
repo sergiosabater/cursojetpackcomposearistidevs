@@ -48,9 +48,14 @@ class MainActivity : ComponentActivity() {
             val pokemonCombat = PokemonCombat(pokemonA = "Pikachu", pokemonB = "Gengar")
 
             CursoJetpackComposeAristiDevsTheme {
-                MyCustomDialog(showDialog = showDialog, pokemonCombat = pokemonCombat){
-                    showDialog = false
-                }
+                MyCustomDialog(
+                    showDialog = showDialog,
+                    pokemonCombat = pokemonCombat,
+                    onStartCombat = {
+
+                        showDialog = false
+                    },
+                    onDismissDialog = { showDialog = false })
                 /*Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     MyMainPage(Modifier.padding(innerPadding))
                 }*/
