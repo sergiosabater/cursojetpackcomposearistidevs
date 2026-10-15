@@ -218,10 +218,3 @@ fun MyCustomDialog(
         }
     }
 }
-
-@Preview
-@Composable
-private fun MyPreview1() {
-
-
-}
