@@ -211,9 +211,7 @@ fun MyCustomDialog(
                 Button(onClick = { onDismissDialog() }) {
                     Text("A LUCHAR!!!")
                 }
-                TextButton(onClick = {onDismissDialog()}) {
-                    Text("Cancelar")
-                }
+                
             }
         }
     }
