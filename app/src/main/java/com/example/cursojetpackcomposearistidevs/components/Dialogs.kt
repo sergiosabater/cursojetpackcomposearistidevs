@@ -208,10 +208,6 @@ fun MyCustomDialog(
                     Spacer(Modifier.width(4.dp))
                     Text(pokemonCombat.pokemonB, fontWeight = FontWeight.Bold, fontSize = 20.sp)
                 }
-                Button(onClick = { onDismissDialog() }) {
-                    Text("A LUCHAR!!!")
-                }
-                
             }
         }
     }
