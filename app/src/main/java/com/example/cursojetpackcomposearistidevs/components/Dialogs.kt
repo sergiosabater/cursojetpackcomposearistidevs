@@ -202,11 +202,7 @@ fun MyCustomDialog(
                     modifier = Modifier.fillMaxWidth().padding(16.dp),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    Text(pokemonCombat.pokemonA, fontWeight = FontWeight.Bold, fontSize = 20.sp)
-                    Spacer(Modifier.width(4.dp))
-                    Text("VS")
-                    Spacer(Modifier.width(4.dp))
-                    Text(pokemonCombat.pokemonB, fontWeight = FontWeight.Bold, fontSize = 20.sp)
+                    
                 }
             }
         }
