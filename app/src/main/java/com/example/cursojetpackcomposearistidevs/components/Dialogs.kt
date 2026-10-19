@@ -191,15 +191,7 @@ fun MyCustomDialog(
 ) {
     if (showDialog) {
         Dialog(onDismissRequest = { onDismissDialog }) {
-            Column(
-                modifier = modifier
-                    .fillMaxWidth()
-                    .background(Color.White, shape = RoundedCornerShape(24))
-                    .padding(24.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                
-            }
+            
         }
     }
 }
