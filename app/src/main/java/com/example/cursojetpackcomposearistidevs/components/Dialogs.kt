@@ -198,12 +198,7 @@ fun MyCustomDialog(
                     .padding(24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth().padding(16.dp),
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    
-                }
+                
             }
         }
     }
