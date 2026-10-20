@@ -189,9 +189,5 @@ fun MyCustomDialog(
     onStartCombat: () -> Unit,
     onDismissDialog: () -> Unit
 ) {
-    if (showDialog) {
-        Dialog(onDismissRequest = { onDismissDialog }) {
-            
-        }
-    }
+    
 }
